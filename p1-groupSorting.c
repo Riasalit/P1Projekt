@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef enum {nothing, ideskaber, specialist, analysator, organisator, opstarter, afslutter, formidler, koordinator, kontaktskaber} roles;
+#include "structs.h"
 
 int main(void){
 
   return EXIT_SUCCESS;
 }
+
