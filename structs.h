@@ -4,5 +4,5 @@ typedef enum {nothing, ideskaber, specialist, analysator, organisator, opstarter
 typedef struct{
   char name[30];
   int id;
-  roles role[];
+  roles *role;
 } student;
