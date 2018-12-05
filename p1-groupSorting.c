@@ -19,7 +19,7 @@ int main(void){
   nrOfStudents = countStudent(dataSet);
   class = allocateStudents(nrOfStudents);
   makeStudentArray(dataSet, nrOfStudents, class);
-  groups = allocateSizeGroups(nrOfStudents, groupSize, &groups, &nrOfGroups);
+  allocateSizeGroups(nrOfStudents, groupSize, &groups, &nrOfGroups);
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
 
   do{
