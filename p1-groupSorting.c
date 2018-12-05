@@ -1,9 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*prototypes.h uses structs.h so they have to be loaded in this order*/ 
+/*prototypes.h uses structs.h so they have to be loaded in this order*/
 #include "structs.h"
-#include "prototypes.h"
+//#include "prototypes.h"
+
+#include "teacherInput.h"
+#include "countStudent.h"
+#include "allocateStudents.h"
+#include "makeStudentArray.h"
+#include "allocateSizeGroups.h"
+#include "fillGroups.h"
+#include "squaredError.h"
+#include "resortNormies.h"
+#include "printAll.h"
 
 int main(void){
   student *class;
