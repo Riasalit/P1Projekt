@@ -6,3 +6,9 @@ typedef struct{
   int id;
   roles *role;
 } student;
+
+typedef struct{
+  student *students;
+  int quality;
+  roles roles[8];
+} group;
