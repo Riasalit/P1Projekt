@@ -6,7 +6,7 @@
 /*#include "prototypes.h"*/
 
 #include "teacherInput.h"
-#include "countStudent.h"
+#include "countStudents.h"
 #include "allocateStudents.h"
 #include "makeStudentArray.h"
 #include "allocateSizeGroups.h"
@@ -20,13 +20,14 @@ int main(void){
   group *groups;
   FILE *dataSet;
   int nrOfStudents;
+  int nrOfStudentsTeacherInput;
   int groupSize;
   int nrOfGroups;
 
-  dataSet = fopen("dataset", "r");
+//  dataSet = fopen("dataset", "r");
 
-  teacherInput(&groupSize);
-  nrOfStudents = countStudent(dataSet);
+  teacherInput(&groupSize, &nrOfStudentsTeacherInput);
+  nrOfStudents = countStudents(dataSet);
   class = allocateStudents(nrOfStudents);
   makeStudentArray(dataSet, nrOfStudents, class);
   allocateSizeGroups(nrOfStudents, groupSize, &groups, &nrOfGroups);
