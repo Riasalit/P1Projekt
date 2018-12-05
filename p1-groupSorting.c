@@ -3,7 +3,7 @@
 
 /*prototypes.h uses structs.h so they have to be loaded in this order*/
 #include "structs.h"
-//#include "prototypes.h"
+/*#include "prototypes.h"*/
 
 #include "teacherInput.h"
 #include "countStudent.h"
