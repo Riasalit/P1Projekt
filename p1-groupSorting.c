@@ -25,6 +25,11 @@ int main(void){
   int nrOfGroups;
 
   dataSet = fopen("dataset", "r");
+  if(dataSet == NULL){
+    printf("dataSet could not be found\n");
+    exit(EXIT_FAILURE);
+  }
+
   while (!sentinel) {
     teacherInput(&groupSize, &nrOfStudents);
     sentinel = countStudents(dataSet, nrOfStudents);
