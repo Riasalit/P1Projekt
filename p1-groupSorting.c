@@ -20,14 +20,18 @@ int main(void){
   group *groups;
   FILE *dataSet;
   int nrOfStudents;
-  int nrOfStudentsTeacherInput;
+  int sentinel = 0;
   int groupSize;
   int nrOfGroups;
 
-//  dataSet = fopen("dataset", "r");
-
-  teacherInput(&groupSize, &nrOfStudentsTeacherInput);
-  nrOfStudents = countStudents(dataSet);
+  dataSet = fopen("dataset", "r");
+  while (!sentinel) {
+    teacherInput(&groupSize, &nrOfStudents);
+    sentinel = countStudents(dataSet, nrOfStudents);
+    if(!sentinel){
+      printf("Number of students doesn't match the input file\n");
+    }
+  }
   class = allocateStudents(nrOfStudents);
   makeStudentArray(dataSet, nrOfStudents, class);
   allocateSizeGroups(nrOfStudents, groupSize, &groups, &nrOfGroups);
