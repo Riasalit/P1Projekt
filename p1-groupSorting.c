@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 /*prototypes.h uses structs.h so they have to be loaded in this order*/
 #include "structs.h"
 /*#include "prototypes.h"*/
 
 #include "teacherInput.h"
-#include "countStudent.h"
+#include "countStudents.h"
 #include "allocateStudents.h"
 #include "makeStudentArray.h"
 #include "allocateSizeGroups.h"
@@ -20,13 +20,23 @@ int main(void){
   group *groups;
   FILE *dataSet;
   int nrOfStudents;
+  int sentinel = 0;
   int groupSize;
   int nrOfGroups;
 
   dataSet = fopen("dataset", "r");
+  if(dataSet == NULL){
+    printf("dataSet could not be found\n");
+    exit(EXIT_FAILURE);
+  }
 
-  teacherInput(&groupSize);
-  nrOfStudents = countStudent(dataSet);
+  while (!sentinel) {
+    teacherInput(&groupSize, &nrOfStudents);
+    sentinel = countStudents(dataSet, nrOfStudents);
+    if(!sentinel){
+      printf("Number of students doesn't match the input file\n");
+    }
+  }
   class = allocateStudents(nrOfStudents);
   makeStudentArray(dataSet, nrOfStudents, class);
   allocateSizeGroups(nrOfStudents, groupSize, &groups, &nrOfGroups);
