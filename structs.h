@@ -17,5 +17,6 @@ typedef struct{
 typedef struct{
   student *students;
   int quality;
+  int studentsInGroup;
   roles roles[ROLES_IN_GROUP];
 } group;
