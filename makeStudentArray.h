@@ -26,6 +26,7 @@ void makeStudentArray(FILE *dataSet, const int nrOfStudents, student *class){
   int i;
   char temp1[30], temp2[30], temp3[30];
   for (i = 0; i < nrOfStudents; i++){
+    class[i].isStudent = 1;
     class[i].id = i;
     fscanf(dataSet, " %[^:]: %s %s %s", class[i].name,
                                         temp1,

@@ -1,3 +1,5 @@
+#define ROLES_IN_GROUP 8
+#define ROLES_IN_STUDENT 3
 
 typedef enum {nothing, ideskaber,
               specialist, analysator,
@@ -6,13 +8,14 @@ typedef enum {nothing, ideskaber,
               koordinator, kontaktskaber} roles;
 
 typedef struct{
+  int isStudent;
   char name[30];
   int id;
-  roles role[3];
+  roles role[ROLES_IN_STUDENT];
 } student;
 
 typedef struct{
   student *students;
   int quality;
-  roles roles[8];
+  roles roles[ROLES_IN_GROUP];
 } group;
