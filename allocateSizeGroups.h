@@ -1,3 +1,3 @@
-group *allocateSizeGroups(const int nrOfStudents, const int groupSize, group **groups, int *nrOfGroups){
+group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOfGroups){
   return (group*)1;
 }

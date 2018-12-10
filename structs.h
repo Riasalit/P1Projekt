@@ -1,5 +1,6 @@
-#define ROLES_IN_GROUP 8
+#define ROLES_IN_GROUP 9
 #define ROLES_IN_STUDENT 3
+#define MAX_ATTEMPTS 50
 
 typedef enum {nothing, ideskaber,
               specialist, analysator,
