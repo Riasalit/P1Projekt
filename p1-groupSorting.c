@@ -40,6 +40,7 @@ int main(void){
   class = allocateStudents(nrOfStudents);
   makeStudentArray(dataSet, nrOfStudents, class);
   groups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
+  sortedGroups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
 
   do{
