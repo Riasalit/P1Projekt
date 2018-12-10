@@ -1,4 +1,5 @@
 group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOfGroups){
+
   group *temp;
   int i, k, j;
   *nrOfGroups=nrOfStudents/groupSize;
