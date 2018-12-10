@@ -1,4 +1,4 @@
-#define ROLES_IN_GROUP 8
+#define ROLES_IN_GROUP 9
 #define ROLES_IN_STUDENT 3
 
 typedef enum {nothing, ideskaber,
