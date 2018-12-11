@@ -1,34 +1,58 @@
 int calcBenefit(const student test_person, const group test_group){
   int counter = ROLES_IN_STUDENT;
   int i, j;
+  int checkedRole = 0;
   for(i = 0; i < ROLES_IN_STUDENT; i++){
     for(j = 0; j < ROLES_IN_GROUP; j++){
-      if(test_person.role[i] == test_group.roles[j]){
+      if(test_person.role[i] == test_group.roles[j] && !checkedRole){
         counter--;
+        checkedRole++;
       }
     }
   }
   return counter;
 }
 
-void fillGroups(const student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
-  int i, j;
-  printf("JEG ER SUPER GAY\n");
-  for(i = 0; i < nrOfGroups; i++){
-    for(j = 0; j < ROLES_IN_GROUP; j++){
-      groups[i].roles[j] = nothing;
+void addRolesToGroup(group *group){
+  int i, j, k, checkedRole = 0, h = 0, hasRole = 0;
+  for(i = 0; i < group->studentsInGroup; i++){
+    for(j = 0 ; j < ROLES_IN_STUDENT; j++){
+      for(k = 0; k < ROLES_IN_GROUP; k++){
+        if(group->students[i].isStudent && (group->students[i].role[j] != group->roles[k]) && !checkedRole && (group->students[i].role[j] != nothing)){
+          checkedRole++;
+          hasRole = 0;
+          while(group->roles[h] != nothing){
+            if (group->roles[h] == group->students[i].role[j]) {
+              hasRole = 1;
+            }
+            h++;
+          }
+          if (!hasRole) {
+          group->roles[h] = group->students[i].role[j];
+          }
+
+          h = 0;
+        }
+      }
+      checkedRole = 0;
     }
   }
-  printf("JEG ER SUPER mega GAY\n");
-  for(i = 0; i < nrOfGroups; i++){
-    printf("gruppe %i har disse roller\n", i);
-    for(j = 0; j < ROLES_IN_GROUP; j++){
-      printf("rolle %i: %i\n", j, groups[i].roles[j]);
+}
+
+void fillGroups(student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
+  int i, j, index = 0, tempBestValue;
+  for(i = 0; i < nrOfStudents; i++){
+    for(j = 0; j < nrOfGroups; j++){
+      if(index < calcBenefit(class[i], groups[j]) && (groups[j].studentsInGroup < groupSize)){
+        index = calcBenefit(class[i], groups[j]);
+        tempBestValue = j;
+      }
     }
+
+    groups[tempBestValue].students[groups[tempBestValue].studentsInGroup] = class[i];
+    groups[tempBestValue].studentsInGroup++;
+    addRolesToGroup(&groups[tempBestValue]);
+    index = 0;
   }
-  /* for(i = 0; i < nrOfStudents; i++){
-    if(class[i].student.gfr)
-      hvis den gør mere i en gruppe gem gruppens indeks
-      set i gruppen den gjorde mest
-  } */
+  free(class), class = NULL;
 }

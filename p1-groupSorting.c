@@ -4,6 +4,7 @@
 /*prototypes.h uses structs.h so they have to be loaded in this order*/
 #include "structs.h"
 /*#include "prototypes.h"*/
+#include "sortGroups.h"
 
 #include "teacherInput.h"
 #include "countStudents.h"
@@ -17,12 +18,15 @@
 
 int main(void){
   student *class;
-  group *groups;
+  group *groups, *sortedGroups;
   FILE *dataSet;
   int nrOfStudents;
   int sentinel = 0;
   int groupSize;
   int nrOfGroups;
+  double currentSquaredError, bestSquaredError;
+  int attemptsLeft = MAX_ATTEMPTS;
+  int i;
 
   dataSet = fopen("dataset", "r");
   if(dataSet == NULL){
@@ -39,13 +43,30 @@ int main(void){
   }
   class = allocateStudents(nrOfStudents);
   makeStudentArray(dataSet, nrOfStudents, class);
-  allocateSizeGroups(nrOfStudents, groupSize, &groups, &nrOfGroups);
+  groups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
+  sortedGroups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
-
   do{
     resortNormies(groupSize, nrOfStudents, nrOfGroups, groups);
-  } while (squaredError(groupSize, nrOfStudents, nrOfGroups, groups) > 1);
+    currentSquaredError = squaredError(groupSize, nrOfStudents, nrOfGroups, groups);
+    if (currentSquaredError < bestSquaredError){
+      bestSquaredError = currentSquaredError;
+      attemptsLeft = MAX_ATTEMPTS;
+      for(i = 0; i < nrOfGroups; i++){
+        sortedGroups[i] = groups[i];
+      }
+    } else {
+
+      attemptsLeft--;
+    }
+  } while (attemptsLeft > 0);
 
   printAll(groups, groupSize, nrOfGroups);
+  for(i = 0; i < nrOfGroups; i++){
+    free(groups[i].students);
+    free(sortedGroups[i].students);
+  }
+  free(sortedGroups);
+  free(groups);
   return EXIT_SUCCESS;
 }
