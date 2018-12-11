@@ -3,7 +3,7 @@ double squaredError(const int groupSize, const int nrOfStudents, const int nrOfG
   double  *error;
   double avg = 0, sqrdError = 0;
   double returnValue = 0;
-  error = calloc(nrOfGroups, sizeof(int));
+  error = calloc(nrOfGroups, sizeof(double));
   if (error == NULL){
     printf("ERROR: errors not allocated\n");
     exit(EXIT_FAILURE);

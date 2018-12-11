@@ -134,11 +134,6 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
     }
   }
 
-  for(i = 0; i < countStudentsResort; i++){
-    printf("name = %s\n", studentsResort[i].name);
-  }
-  printf("\n\n");
-
   free(indices), indices = NULL;
   fixGroupRoleArray(nrOfGroups, groupSize, groups);
   sortGroups(nrOfGroups, groupSize, groups); /* move the non-students to the last indices of the groups */

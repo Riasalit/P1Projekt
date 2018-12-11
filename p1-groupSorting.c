@@ -11,6 +11,7 @@
 #include "allocateStudents.h"
 #include "makeStudentArray.h"
 #include "allocateSizeGroups.h"
+#include "allocateBestGroups.h"
 #include "fillGroups.h"
 #include "resortNormies.h"
 #include "squaredError.h"
@@ -43,8 +44,9 @@ int main(void){
   }
   class = allocateStudents(nrOfStudents);
   makeStudentArray(dataSet, nrOfStudents, class);
+  fclose(dataSet);
   groups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
-  sortedGroups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
+  sortedGroups = allocateBestGroups(nrOfStudents, groupSize, nrOfGroups);
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
   do{
     resortNormies(groupSize, nrOfStudents, nrOfGroups, groups);
@@ -60,9 +62,9 @@ int main(void){
     }
   } while (attemptsLeft > 0);
 
-  printAll(groups, groupSize, nrOfGroups);
+  printAll(sortedGroups, groupSize, nrOfGroups);
   for(i = 0; i < nrOfGroups; i++){
-    free(groups[i].students);
+    free(groups[i].students), groups[i].students = NULL;
   }
   free(sortedGroups);
   free(groups);
