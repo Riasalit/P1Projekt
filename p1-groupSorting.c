@@ -12,8 +12,8 @@
 #include "makeStudentArray.h"
 #include "allocateSizeGroups.h"
 #include "fillGroups.h"
-#include "squaredError.h"
 #include "resortNormies.h"
+#include "squaredError.h"
 #include "printAll.h"
 
 int main(void){
@@ -24,7 +24,7 @@ int main(void){
   int sentinel = 0;
   int groupSize;
   int nrOfGroups;
-  double currentSquaredError, bestSquaredError;
+  double currentSquaredError, bestSquaredError = 0;
   int attemptsLeft = MAX_ATTEMPTS;
   int i;
 
@@ -49,14 +49,13 @@ int main(void){
   do{
     resortNormies(groupSize, nrOfStudents, nrOfGroups, groups);
     currentSquaredError = squaredError(groupSize, nrOfStudents, nrOfGroups, groups);
-    if (currentSquaredError < bestSquaredError){
+    if (currentSquaredError > bestSquaredError){
       bestSquaredError = currentSquaredError;
       attemptsLeft = MAX_ATTEMPTS;
       for(i = 0; i < nrOfGroups; i++){
         sortedGroups[i] = groups[i];
       }
     } else {
-
       attemptsLeft--;
     }
   } while (attemptsLeft > 0);
@@ -64,7 +63,6 @@ int main(void){
   printAll(groups, groupSize, nrOfGroups);
   for(i = 0; i < nrOfGroups; i++){
     free(groups[i].students);
-    free(sortedGroups[i].students);
   }
   free(sortedGroups);
   free(groups);

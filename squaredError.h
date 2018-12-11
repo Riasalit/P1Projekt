@@ -1,8 +1,8 @@
-double squaredError(const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
+double squaredError(const int groupSize, const int nrOfStudents, const int nrOfGroups, const group *groups){
   int i, j;
   double  *error;
   double avg = 0, sqrdError = 0;
-
+  double returnValue = 0;
   error = calloc(nrOfGroups, sizeof(int));
   if (error == NULL){
     printf("ERROR: errors not allocated\n");
@@ -21,5 +21,7 @@ double squaredError(const int groupSize, const int nrOfStudents, const int nrOfG
   sqrdError = sqrdError/nrOfGroups;
 
   free(error), error = NULL;
-  return (avg/sqrdError);
+  returnValue = avg/sqrdError;
+  printf("double = %f", returnValue);
+  return returnValue;
 }

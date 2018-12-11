@@ -21,7 +21,7 @@ void addRolesToGroup(group *group){
         if(group->students[i].isStudent && (group->students[i].role[j] != group->roles[k]) && !checkedRole && (group->students[i].role[j] != nothing)){
           checkedRole++;
           hasRole = 0;
-          while(group->roles[h] != nothing){
+          while(h < ROLES_IN_GROUP && group->roles[h] != nothing){
             if (group->roles[h] == group->students[i].role[j]) {
               hasRole = 1;
             }
