@@ -40,12 +40,14 @@ void addRolesToGroup(group *group){
 }
 
 void fillGroups(student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
-  int i, j, index = 0, tempBestValue;
+  int i, j, index = 0, tempBestValue=0;
   for(i = 0; i < nrOfStudents; i++){
     for(j = 0; j < nrOfGroups; j++){
       if(index < calcBenefit(class[i], groups[j]) && (groups[j].studentsInGroup < groupSize)){
-        index = calcBenefit(class[i], groups[j]);
-        tempBestValue = j;
+        if (groups[j].studentsInGroup < groups[tempBestValue].studentsInGroup) {
+          index = calcBenefit(class[i], groups[j]);
+          tempBestValue = j;
+        }
       }
     }
 

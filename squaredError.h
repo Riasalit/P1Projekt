@@ -22,6 +22,5 @@ double squaredError(const int groupSize, const int nrOfStudents, const int nrOfG
 
   free(error), error = NULL;
   returnValue = avg/sqrdError;
-  printf("double = %f", returnValue);
   return returnValue;
 }

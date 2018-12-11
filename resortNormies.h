@@ -27,15 +27,17 @@ void compareToRestOfGroup(const group *groups, const int groupIndex, const int s
           if(i != studentIndex){ /* compare input studnet with the rest in the group */
             sameRoles = groups[groupIndex].students[studentIndex].role[roleIndex] ==
                         groups[groupIndex].students[i].role[j];
-            if(sameRoles) count++; /* count if multiple of same role was found */
+            if(sameRoles) count = 1; /* count if multiple of same role was found */
           }
         }
       }
+    }else{
+      count = 1;
     }
 
     /* if there is no dublicates, add one to the array of uniqueRoles */
     if (count == 0){
-      uniqueRoles[studentIndex] += 1;
+      uniqueRoles[studentIndex] = 1;
     }
   }
 
@@ -101,10 +103,9 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
         }
       }
     }
-    for(j = 0; j < groupSize; j++){
+    for(j = 0; j < groups[i].studentsInGroup; j++){
       if(uniqueRoles[j] == 0){
-        countStudentsResort ++; /* count the amount of students who needs to be resortet */
-
+        countStudentsResort += 1; /* count the amount of students who needs to be resortet */
         /* find the index of each student who needs to be resortet in the 2d
         array "group[]student[]" and add it to the 1 d array.
         formula = (1st index * size of 2nd array + index of 2nd array) */
@@ -133,7 +134,11 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
     }
   }
 
-  printf("test\n");
+  for(i = 0; i < countStudentsResort; i++){
+    printf("name = %s\n", studentsResort[i].name);
+  }
+  printf("\n\n");
+
   free(indices), indices = NULL;
   fixGroupRoleArray(nrOfGroups, groupSize, groups);
   sortGroups(nrOfGroups, groupSize, groups); /* move the non-students to the last indices of the groups */
