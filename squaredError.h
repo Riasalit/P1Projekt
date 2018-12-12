@@ -1,3 +1,4 @@
+
 double squaredError(const int groupSize, const int nrOfStudents, const int nrOfGroups, const group *groups){
   int i, j;
   double  *roles;
@@ -29,4 +30,5 @@ double squaredError(const int groupSize, const int nrOfStudents, const int nrOfG
     returnValue = avg/(1/(double)nrOfGroups);
   }
   return returnValue;
+
 }

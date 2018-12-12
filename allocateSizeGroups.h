@@ -1,4 +1,5 @@
 group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOfGroups){
+
   group *temp;
   int i, k, j;
   temp = NULL;
@@ -15,6 +16,7 @@ group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOf
     exit(EXIT_FAILURE);
   }
   for(i = 0; i < *nrOfGroups; i++){
+
     temp[i].students = NULL;
     temp[i].students = calloc(groupSize, sizeof(student));
     if(temp[i].students == NULL){
@@ -24,6 +26,7 @@ group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOf
   }
   for(i = 0; i < *nrOfGroups; i++){
     temp[i].quality = 0;
+
     temp[i].studentsInGroup = 0;
     for(j = 0; j < ROLES_IN_GROUP; j++){
       temp[i].roles[j] = nothing;

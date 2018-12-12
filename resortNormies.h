@@ -1,7 +1,9 @@
+
 /*
 ##############################
 allocte space for an int array
 ##############################*/
+
 int *allocateIntArray(const int length){
   int *array;
   array = calloc(length, sizeof(int));
@@ -45,10 +47,12 @@ void compareToRestOfGroup(const group *groups, const int groupIndex, const int s
 #################################################################
 remake the array that keeps track of what roles are in the groups
 #################################################################*/
+
 void fixGroupRoleArray(const int nrOfGroups, const int groupSize, group *groups){
   int i, j, k, l;
   int unique = 0;
   int index = 0;
+
 
   for(i = 0; i < nrOfGroups; i++){ /* iterate throug all groups */
     for(j = 0; j < ROLES_IN_GROUP; j++){ /* iterate through all roles */
@@ -63,6 +67,7 @@ void fixGroupRoleArray(const int nrOfGroups, const int groupSize, group *groups)
           if(groups[i].students[j].role[k] == groups[i].roles[l]) unique = 0;
         }
         /* if a role wasnt already in the groups array of roles, add it */
+
         if (unique) groups[i].roles[index++] = groups[i].students[j].role[k];
       }
     }
@@ -78,20 +83,26 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
    and insert them into other groups where they do more */
   int i, j, k;
   int x, y;
+
   int *uniqueRoles, *indices;
   int studentMax, countStudentsResort = 0;
   student *studentsResort;
 
+
   studentMax = nrOfGroups*groupSize; /* max amount of students needed to hit all indices in all groups */
+
 
   uniqueRoles = allocateIntArray(groupSize);
   indices = allocateIntArray(studentMax);
   for(i = 0; i < studentMax; i++){
+
     indices[i] = 0; /* initiate all indices in the indices array */
+
   }
 
   for(i = 0; i < nrOfGroups; i++){
     for(j = 0; j < groupSize; j++){
+
       uniqueRoles[j] = 0; /* reset the unique roles array */
     }
     for(j = 0; j < groups[i].studentsInGroup; j++){
@@ -109,16 +120,19 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
         /* find the index of each student who needs to be resortet in the 2d
         array "group[]student[]" and add it to the 1 d array.
         formula = (1st index * size of 2nd array + index of 2nd array) */
+
         indices[i*groupSize+j] = 1;
       }
     }
   }
+
   free(uniqueRoles), uniqueRoles = NULL;
 
   /* allocate the space for students to resort */
   studentsResort = calloc(countStudentsResort , sizeof(student));
   if (studentsResort == NULL){
     perror("ERROR: studentsResort ");
+
     exit(EXIT_FAILURE);
   }
   j=0;
@@ -126,6 +140,7 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
     if (indices[i]){
       /* the revers of (1st index * size of 2nd array + index of 2nd array)
       to remove them from the original array and add the students to studentsResort */
+
       x = i/groupSize;
       y = i%groupSize;
       studentsResort[j++] = groups[x].students[y];
@@ -138,4 +153,5 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
   fixGroupRoleArray(nrOfGroups, groupSize, groups);
   sortGroups(nrOfGroups, groupSize, groups); /* move the non-students to the last indices of the groups */
   fillGroups(studentsResort, groupSize, countStudentsResort, nrOfGroups, groups);
+
 }
