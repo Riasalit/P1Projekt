@@ -65,18 +65,3 @@ void fillGroups(student *class, const int groupSize, const int nrOfStudents, con
 
 }
 
-void fillGroups(const student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
-  int i, j, index = 0, tempBestValue;
-  for(i = 0; i < nrOfStudents; i++){
-    for(j = 0; j < nrOfGroups; j++){
-      if(index < calcBenefit(class[i], groups[j]) && (groups[j].studentsInGroup < groupSize)){
-        index = calcBenefit(class[i], groups[j]);
-        tempBestValue = j;
-      }
-    } 
-
-    groups[tempBestValue].students[groups[tempBestValue].studentsInGroup] = class[i];
-    groups[tempBestValue].studentsInGroup++;
-    addRolesToGroup(&groups[tempBestValue]);
-    index = 0;
-  }
