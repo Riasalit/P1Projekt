@@ -36,7 +36,7 @@ void compareToRestOfGroup(const group *groups, const int groupIndex, const int s
     }
 
     /* if there is no dublicates, add one to the array of uniqueRoles */
-    if (count == 0){
+    if (count < 2){
       uniqueRoles[studentIndex] = 1;
     }
   }
@@ -60,7 +60,7 @@ void fixGroupRoleArray(const int nrOfGroups, const int groupSize, group *groups)
         unique = 1; /* reset "unique" boolean value  */
         for(l = 0; l < ROLES_IN_GROUP; l++){ /* iterate through all roles in group "i" */
           /* check if the role in student "j" already is in group "i"'s array of roles */
-          if(groups[i].students[j].role[k] == groups[i].roles[l]) unique = 0;
+          if(groups[i].students[j].role[k] == groups[i].roles[l] || groups[i].students[j].role[k] == nothing) unique = 0;
         }
         /* if a role wasnt already in the groups array of roles, add it */
         if (unique) groups[i].roles[index++] = groups[i].students[j].role[k];
