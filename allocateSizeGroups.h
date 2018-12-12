@@ -30,6 +30,9 @@ group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOf
     }
     for(j = 0; j < groupSize; j++){
       temp[i].students[j].isStudent = 0;
+      for(k = 0; k < ROLES_IN_STUDENT; k++){
+        temp[i].students[j].role[k] = nothing;
+      }
     }
   }
   return temp;
