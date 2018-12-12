@@ -25,9 +25,7 @@ int main(void){
   int sentinel = 0;
   int groupSize;
   int nrOfGroups;
-
   double currentSquaredError, bestSquaredError = 0;
-
   int attemptsLeft = MAX_ATTEMPTS;
   int i;
 
@@ -49,14 +47,11 @@ int main(void){
   fclose(dataSet);
   groups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
   sortedGroups = allocateBestGroups(nrOfStudents, groupSize, nrOfGroups);
-
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
   do{
     resortNormies(groupSize, nrOfStudents, nrOfGroups, groups);
     currentSquaredError = squaredError(groupSize, nrOfStudents, nrOfGroups, groups);
-
     if (currentSquaredError > bestSquaredError){
-
       bestSquaredError = currentSquaredError;
       attemptsLeft = MAX_ATTEMPTS;
       for(i = 0; i < nrOfGroups; i++){
@@ -66,13 +61,11 @@ int main(void){
       attemptsLeft--;
     }
   } while (attemptsLeft > 0);
-
   printAll(sortedGroups, groupSize, nrOfGroups);
   for(i = 0; i < nrOfGroups; i++){
     free(groups[i].students), groups[i].students = NULL;
   }
   free(sortedGroups);
   free(groups);
-
   return EXIT_SUCCESS;
 }
