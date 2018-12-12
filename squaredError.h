@@ -1,26 +1,32 @@
 double squaredError(const int groupSize, const int nrOfStudents, const int nrOfGroups, const group *groups){
   int i, j;
-  double  *error;
-  double avg = 0, sqrdError = 0;
+  double  *roles;
+  double avg = 0, avgSqrdError = 0;
   double returnValue = 0;
-  error = calloc(nrOfGroups, sizeof(double));
-  if (error == NULL){
+  roles = calloc(nrOfGroups, sizeof(double));
+  if (roles == NULL){
     printf("ERROR: errors not allocated\n");
     exit(EXIT_FAILURE);
   }
 
   for(i = 0; i < nrOfGroups; i++){
-    error[i] = ROLES_IN_GROUP;
+    roles[i] = 0;
     for (j = 0; j < ROLES_IN_GROUP; j++){
-      if(groups[i].roles[j] != nothing) error[i] -= 1;
+      if(groups[i].roles[j] != nothing) roles[i] += 1;
     }
-    avg = ROLES_IN_GROUP - error[i];
-    sqrdError += error[i] * error[i];
+    avg += roles[i];
   }
   avg = avg/nrOfGroups;
-  sqrdError = sqrdError/nrOfGroups;
+  for(i = 0; i < nrOfGroups; i++){
+    avgSqrdError += (avg-roles[i])*(avg-roles[i]);
+  }
+  avgSqrdError = avgSqrdError/nrOfGroups;
 
-  free(error), error = NULL;
-  returnValue = avg/sqrdError;
+  free(roles), roles = NULL;
+  if(avgSqrdError != 0){
+    returnValue = avg/avgSqrdError;
+  } else {
+    returnValue = avg/(1/(double)nrOfGroups);
+  }
   return returnValue;
 }

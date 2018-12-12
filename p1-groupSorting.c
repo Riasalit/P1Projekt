@@ -61,7 +61,6 @@ int main(void){
       attemptsLeft--;
     }
   } while (attemptsLeft > 0);
-
   printAll(sortedGroups, groupSize, nrOfGroups);
   for(i = 0; i < nrOfGroups; i++){
     free(groups[i].students), groups[i].students = NULL;
