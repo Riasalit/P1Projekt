@@ -55,7 +55,7 @@ void fixGroupRoleArray(const int nrOfGroups, const int groupSize, group *groups)
       groups[i].roles[j] = nothing; /* sets all roles in group "i" to nothing */
     }
     index = 0;
-    for(j = 0; j < groupSize; j++){ /* iterate throug all inices of students in group "i" */
+    for(j = 0; j < groups[i].studentsInGroup; j++){ /* iterate throug all inices of students in group "i" */
       for(k = 0; k < ROLES_IN_STUDENT; k++){ /* iterate through all roles in student "j" in group "i" */
         unique = 1; /* reset "unique" boolean value  */
         for(l = 0; l < ROLES_IN_GROUP; l++){ /* iterate through all roles in group "i" */
@@ -134,8 +134,8 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
     }
   }
 
-  free(indices), indices = NULL;
-  fixGroupRoleArray(nrOfGroups, groupSize, groups);
   sortGroups(nrOfGroups, groupSize, groups); /* move the non-students to the last indices of the groups */
+  fixGroupRoleArray(nrOfGroups, groupSize, groups);
+  free(indices), indices = NULL;
   fillGroups(studentsResort, groupSize, countStudentsResort, nrOfGroups, groups);
 }
