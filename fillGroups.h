@@ -21,7 +21,9 @@ void addRolesToGroup(group *group){
         if(group->students[i].isStudent && (group->students[i].role[j] != group->roles[k]) && !checkedRole && (group->students[i].role[j] != nothing)){
           checkedRole++;
           hasRole = 0;
-          while(group->roles[h] != nothing){
+
+          while(h < ROLES_IN_GROUP && group->roles[h] != nothing){
+
             if (group->roles[h] == group->students[i].role[j]) {
               hasRole = 1;
             }
@@ -35,8 +37,32 @@ void addRolesToGroup(group *group){
         }
       }
       checkedRole = 0;
+
     }
   }
+}
+
+void fillGroups(student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
+  int i, j, index = 0, tempBestValue=0;
+  for(i = 0; i < nrOfStudents; i++){
+    for(j = 0; j < nrOfGroups; j++){
+      if(index < calcBenefit(class[i], groups[j]) && (groups[j].studentsInGroup < groupSize)){
+        if (groups[j].studentsInGroup < groups[tempBestValue].studentsInGroup) {
+          index = calcBenefit(class[i], groups[j]);
+          tempBestValue = j;
+        }
+      }
+
+    }
+
+    groups[tempBestValue].students[groups[tempBestValue].studentsInGroup] = class[i];
+    groups[tempBestValue].studentsInGroup++;
+    addRolesToGroup(&groups[tempBestValue]);
+    index = 0;
+  }
+
+  free(class), class = NULL;
+
 }
 
 void fillGroups(const student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
