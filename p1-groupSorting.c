@@ -29,7 +29,7 @@ int main(void){
   int attemptsLeft = MAX_ATTEMPTS;
   int i;
 
-  dataSet = fopen("dataset", "r");
+  dataSet = fopen("dataset1", "r");
   if(dataSet == NULL){
     printf("dataSet could not be found\n");
     exit(EXIT_FAILURE);
