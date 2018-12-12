@@ -44,10 +44,11 @@ void fillGroups(student *class, const int groupSize, const int nrOfStudents, con
   for(i = 0; i < nrOfStudents; i++){
     for(j = 0; j < nrOfGroups; j++){
       if(index < calcBenefit(class[i], groups[j]) && (groups[j].studentsInGroup < groupSize)){
-        /* if (groups[j].studentsInGroup < groups[tempBestValue].studentsInGroup) {
-          */index = calcBenefit(class[i], groups[j]);
-          tempBestValue = j;
-        /*} */
+        index = calcBenefit(class[i], groups[j]);
+        tempBestValue = j;
+      }
+      else if (index == calcBenefit(class[i], groups[j]) && (groups[j].studentsInGroup < groupSize) && (groups[j].studentsInGroup < groups[tempBestValue].studentsInGroup)){
+        tempBestValue = j;
       }
     }
 
