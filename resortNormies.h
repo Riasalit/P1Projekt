@@ -1,6 +1,6 @@
 /*
 ##############################
-allocte space for an int array
+allocate space for an int array
 ##############################*/
 int *allocateIntArray(const int length){
   int *array;
