@@ -126,7 +126,6 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
     exit(EXIT_FAILURE);
   }
   j=0;
-  printf("\n\n");
   for(i = 0; i < studentMax; i++){
     if (indices[i]){
       /* the revers of (1st index * size of 2nd array + index of 2nd array)
@@ -134,7 +133,6 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
       x = i/groupSize;
       y = i%groupSize;
       studentsResort[j++] = groups[x].students[y];
-      printf("exit name = %s\n", studentsResort[j-1].name);
       groups[x].students[y].isStudent = 0;
       groups[x].studentsInGroup -= 1;
     }
