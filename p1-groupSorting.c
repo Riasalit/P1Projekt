@@ -29,7 +29,7 @@ int main(void){
   int nrOfGroups;
   double currentSquaredError, bestSquaredError = 0;
   int attemptsLeft = MAX_ATTEMPTS;
-  int i;
+  int i, j;
 
   srand(time(NULL));
   dataSet = fopen("dataset", "r");
@@ -60,16 +60,22 @@ int main(void){
       bestSquaredError = currentSquaredError;
       attemptsLeft = MAX_ATTEMPTS;
       for(i = 0; i < nrOfGroups; i++){
-        sortedGroups[i] = groups[i];
+        for(j = 0; j < ROLES_IN_GROUP; j++){
+          sortedGroups[i].roles[j] = groups[i].roles[j];
+        }
+        for(j = 0; j < groupSize; j++){
+          sortedGroups[i].students[j] = groups[i].students[j];
+        }
+        sortedGroups[i].studentsInGroup = groups[i].studentsInGroup;
       }
     } else {
       attemptsLeft--;
     }
-    printf("attempts left = %d\n", attemptsLeft);
   } while (attemptsLeft > 0);
   printAll(sortedGroups, groupSize, nrOfGroups);
   for(i = 0; i < nrOfGroups; i++){
     free(groups[i].students), groups[i].students = NULL;
+    free(sortedGroups[i].students), sortedGroups[i].students = NULL;
   }
   free(sortedGroups);
   free(groups);
