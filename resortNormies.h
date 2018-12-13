@@ -32,12 +32,12 @@ void compareToRestOfGroup(const group *groups, const int groupIndex, const int s
         }
       }
     }else{
-      count = 1;
+      count = 0;
     }
 
     /* if there is no dublicates, add one to the array of uniqueRoles */
-    if (count < 2){
-      uniqueRoles[studentIndex] = 1;
+    if (count == 1){
+      uniqueRoles[studentIndex] += 1;
     }
   }
 
@@ -104,7 +104,7 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
       }
     }
     for(j = 0; j < groups[i].studentsInGroup; j++){
-      if(uniqueRoles[j] == 0){
+      if(uniqueRoles[j] <= 2){
         countStudentsResort += 1; /* count the amount of students who needs to be resortet */
         /* find the index of each student who needs to be resortet in the 2d
         array "group[]student[]" and add it to the 1 d array.
@@ -137,5 +137,6 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
   sortGroups(nrOfGroups, groupSize, groups); /* move the non-students to the last indices of the groups */
   fixGroupRoleArray(nrOfGroups, groupSize, groups);
   free(indices), indices = NULL;
+  randomizeStudents(countStudentsResort, studentsResort);
   fillGroups(studentsResort, groupSize, countStudentsResort, nrOfGroups, groups);
 }
