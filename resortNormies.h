@@ -18,25 +18,25 @@ compare the student at groupIndex with the rest of the students in that array
 if a unique role is found within that student, add one to the uniqueRoles array
 ###############################################################################*/
 void compareToRestOfGroup(const group *groups, const int groupIndex, const int studentIndex, const int roleIndex, int *uniqueRoles){
-  int count = 0, sameRoles;
+  int unique = 1, sameRoles;
   int i, j;
   /* only run if the role isnt nothing */
   if(groups[groupIndex].students[studentIndex].role[roleIndex] != nothing){
     for(i = 0; i < groups[groupIndex].studentsInGroup; i++){ /* iterate through groups */
       for(j = 0; j < ROLES_IN_STUDENT; j++){ /* iterate through roles */
           if(i != studentIndex){ /* compare input studnet with the rest in the group */
-            sameRoles = groups[groupIndex].students[studentIndex].role[roleIndex] ==
-                        groups[groupIndex].students[i].role[j];
-            if(sameRoles) count = 1; /* count if multiple of same role was found */
+            sameRoles = (groups[groupIndex].students[studentIndex].role[roleIndex] ==
+                        groups[groupIndex].students[i].role[j]);
+            if(sameRoles) unique = 0; /* count if multiple of same role was found */
           }
         }
       }
     }else{
-      count = 0;
+      unique = 0;
     }
 
     /* if there is no dublicates, add one to the array of uniqueRoles */
-    if (count == 1){
+    if (unique == 1){
       uniqueRoles[studentIndex] += 1;
     }
   }
@@ -51,6 +51,7 @@ void fixGroupRoleArray(const int nrOfGroups, const int groupSize, group *groups)
   int index = 0;
 
   for(i = 0; i < nrOfGroups; i++){ /* iterate throug all groups */
+    groups[i].amountOfRoles = 0;
     for(j = 0; j < ROLES_IN_GROUP; j++){ /* iterate through all roles */
       groups[i].roles[j] = nothing; /* sets all roles in group "i" to nothing */
     }
@@ -63,7 +64,10 @@ void fixGroupRoleArray(const int nrOfGroups, const int groupSize, group *groups)
           if(groups[i].students[j].role[k] == groups[i].roles[l] || groups[i].students[j].role[k] == nothing) unique = 0;
         }
         /* if a role wasnt already in the groups array of roles, add it */
-        if (unique) groups[i].roles[index++] = groups[i].students[j].role[k];
+        if (unique) {
+          groups[i].roles[index++] = groups[i].students[j].role[k];
+          groups[i].amountOfRoles += 1;
+        }
       }
     }
   }
@@ -122,6 +126,7 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
     exit(EXIT_FAILURE);
   }
   j=0;
+  printf("\n\n");
   for(i = 0; i < studentMax; i++){
     if (indices[i]){
       /* the revers of (1st index * size of 2nd array + index of 2nd array)
@@ -129,6 +134,7 @@ void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGr
       x = i/groupSize;
       y = i%groupSize;
       studentsResort[j++] = groups[x].students[y];
+      printf("exit name = %s\n", studentsResort[j-1].name);
       groups[x].students[y].isStudent = 0;
       groups[x].studentsInGroup -= 1;
     }

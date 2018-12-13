@@ -1,6 +1,6 @@
 #define ROLES_IN_GROUP 9
 #define ROLES_IN_STUDENT 3
-#define MAX_ATTEMPTS 5000
+#define MAX_ATTEMPTS 5
 
 typedef enum {nothing, ideskaber,
               specialist, analysator,
@@ -19,5 +19,6 @@ typedef struct{
   student *students;
   int quality;
   int studentsInGroup;
+  int amountOfRoles;
   roles roles[ROLES_IN_GROUP];
 } group;

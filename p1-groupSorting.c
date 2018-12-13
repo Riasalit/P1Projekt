@@ -53,6 +53,7 @@ int main(void){
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
   printf("First best average = %f\n", squaredError(groupSize, nrOfStudents, nrOfGroups, groups));
   do{
+    printAll(sortedGroups, groupSize, nrOfGroups);
     resortNormies(groupSize, nrOfStudents, nrOfGroups, groups);
     currentSquaredError = squaredError(groupSize, nrOfStudents, nrOfGroups, groups);
     if (currentSquaredError > bestSquaredError){
