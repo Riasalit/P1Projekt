@@ -10,10 +10,7 @@ double squaredError(const int groupSize, const int nrOfStudents, const int nrOfG
   }
 /* count all the roles in each group and add the count roles[] and then add the number to avg */
   for(i = 0; i < nrOfGroups; i++){
-    roles[i] = 0;
-    for (j = 0; j < ROLES_IN_GROUP; j++){
-      if(groups[i].roles[j] != nothing) roles[i] += 1;
-    }
+    roles[i] = groups[i].amountOfRoles;
     avg += roles[i];
   }
   avg = avg/nrOfGroups; /* divide avg with the number of groups to get the actual average */
