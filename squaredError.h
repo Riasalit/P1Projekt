@@ -1,5 +1,5 @@
 double squaredError(const int groupSize, const int nrOfStudents, const int nrOfGroups, const group *groups){
-  int i, j;
+  int i;
   double  *roles;
   double avg = 0, avgSqrdError = 0;
   double returnValue = 0;

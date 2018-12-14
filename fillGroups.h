@@ -33,10 +33,9 @@ void addRolesToGroup(group *group){
             h++;
           }
           if (!hasRole) {/*if the group doesnt have the students role, add it to the array of roles, and increment amountOfRoles in group*/
-          group->roles[h] = group->students[i].role[j];
-          group->amountOfRoles +=1;
+            group->roles[h] = group->students[i].role[j];
+            group->amountOfRoles +=1;
           }
-
           h = 0;
         }
       }

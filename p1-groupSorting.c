@@ -67,6 +67,7 @@ int main(void){
           sortedGroups[i].students[j] = groups[i].students[j];
         }
         sortedGroups[i].studentsInGroup = groups[i].studentsInGroup;
+        sortedGroups[i].amountOfRoles = groups[i].amountOfRoles;
       }
     } else {
       attemptsLeft--;

@@ -24,7 +24,7 @@ group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOf
     }
   }
   for(i = 0; i < *nrOfGroups; i++){/*iterate through all groups again*/
-    temp[i].quality = 0;
+    temp[i].amountOfRoles = 0;
     temp[i].studentsInGroup = 0;/*assigns 0 to studentsInGroup to avoid undefined behaviour*/
     for(j = 0; j < ROLES_IN_GROUP; j++){/*for every role in the array meant to contain all the roles in the group*/
       temp[i].roles[j] = nothing;/*set all the roles to nothing, for checking if the group has any roles*/
