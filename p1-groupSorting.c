@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-/*prototypes.h uses structs.h so they have to be loaded in this order*/
 #include "structs.h"
-/*#include "prototypes.h"*/
 #include "sortGroups.h"
 
 #include "teacherInput.h"
