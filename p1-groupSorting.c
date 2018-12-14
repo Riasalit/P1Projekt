@@ -49,12 +49,10 @@ int main(void){
   groups = allocateSizeGroups(nrOfStudents, groupSize, &nrOfGroups);
   sortedGroups = allocateBestGroups(nrOfStudents, groupSize, nrOfGroups);
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
-  printf("First best average = %f\n", squaredError(groupSize, nrOfStudents, nrOfGroups, groups));
   do{
     resortNormies(groupSize, nrOfStudents, nrOfGroups, groups);
     currentSquaredError = squaredError(groupSize, nrOfStudents, nrOfGroups, groups);
     if (currentSquaredError > bestSquaredError){
-      printf("New best avgSqrdError = %f\n", currentSquaredError);
       bestSquaredError = currentSquaredError;
       attemptsLeft = MAX_ATTEMPTS;
       for(i = 0; i < nrOfGroups; i++){
