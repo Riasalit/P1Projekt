@@ -4,7 +4,7 @@ int countStudents(FILE *dataSet, const int nrOfStudents){
 
   /*Check if the file pointer equals null. If not, count each line shift as long as the file hasn't reached its end */
   while((ch = fgetc(dataSet)) != EOF){
-    if(ch == '\n'){
+    if(ch == ':'){
       countLines++;
     }
   }
