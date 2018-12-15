@@ -13,7 +13,7 @@
 #include "allocateBestGroups.h"
 #include "fillGroups.h"
 #include "randomizeStudents.h"
-#include "resortNormies.h"
+#include "resortStudents.h"
 #include "squaredError.h"
 #include "printAll.h"
 
@@ -50,7 +50,7 @@ int main(void){
   sortedGroups = allocateBestGroups(nrOfStudents, groupSize, nrOfGroups);
   fillGroups(class, groupSize, nrOfStudents, nrOfGroups, groups);
   do{
-    resortNormies(groupSize, nrOfStudents, nrOfGroups, groups);
+    resortStudents(groupSize, nrOfStudents, nrOfGroups, groups);
     currentSquaredError = squaredError(groupSize, nrOfStudents, nrOfGroups, groups);
     if (currentSquaredError > bestSquaredError){
       bestSquaredError = currentSquaredError;

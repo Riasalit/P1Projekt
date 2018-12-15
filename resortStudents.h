@@ -77,7 +77,7 @@ void fixGroupRoleArray(const int nrOfGroups, const int groupSize, group *groups)
 ###################################################
 remove people who doesnt contribute from the groups
 ###################################################*/
-void resortNormies(const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
+void resortStudents(const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
 /* take people out i who doesnt contribute for more than 1
    and insert them into other groups where they do more */
   int i, j, k;
