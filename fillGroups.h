@@ -5,7 +5,7 @@ Calculate how many unique roles a student contributes to a group
 int calcBenefit(const student test_person, const group test_group){
   int counter = 0;
   int i, j;
-  int checkedRole = 0;
+  int checkedRole = 0;/* meant as a boolean*/
   for(i = 0; i < ROLES_IN_STUDENT; i++){/*iterate through each role the student has*/
     if(test_person.role[i] == nothing){
       checkedRole = 1;
@@ -14,7 +14,7 @@ int calcBenefit(const student test_person, const group test_group){
         if(test_person.role[i] == test_group.roles[j]) checkedRole = 1;/*if a student has a role that is not in the group, counter goes up*/
       }
     }
-    if(!checkedRole) counter++;
+    if(!checkedRole) counter++;/*if the the student had a unique role for the group, counter goes up*/
     checkedRole = 0;
   }
   return counter;
@@ -57,14 +57,14 @@ Puts an array of students in to groups based on where they add the most amount o
 void fillGroups(student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
   student *noBenefits;
   int i, j, index = 0, tempBestValue, currentBenefit, k = 0, betterFound = 0;
-  noBenefits = calloc(nrOfStudents, sizeof(student));
-  if(noBenefits == NULL){
+  noBenefits = calloc(nrOfStudents, sizeof(student));/*allocate space for array of students with no benefit*/
+  if(noBenefits == NULL){/*display error message if not enough space could be allocated and shut down program*/
     printf("cound not allocate space for noBenefits\n");
     exit(EXIT_FAILURE);
   }
   for(i = 0; i < nrOfStudents; i++){/*iterate through the students*/
     tempBestValue = 0;/*make sure the index of the best group starts at 0*/
-    betterFound = 0;
+    betterFound = 0;/*meant as boolean*/
     for(j = 0; j < nrOfGroups; j++){/*iterate through every group*/
       currentBenefit = calcBenefit(class[i], groups[j]);/*Gets benefit added by student for current group*/
       if (index < currentBenefit && (groups[j].studentsInGroup < groupSize)){/*if the previous best group had less benefit from the current student than the current group, and the current group isn't too big*/
@@ -78,8 +78,8 @@ void fillGroups(student *class, const int groupSize, const int nrOfStudents, con
       groups[tempBestValue].studentsInGroup++;/*increments the counter for how many students are in the group*/
       addRolesToGroup(&groups[tempBestValue]);/*adds the students unique roles, if any, to the group's array of roles*/
       index = 0;
-    }else{
-      noBenefits[k++] = class[i];
+    }else{/*if the student doesn't add any roles*/
+      noBenefits[k++] = class[i];/*adds the student to array of students with no benefit*/
     }
   }
   for(i = 0; i < k; i++){
@@ -94,6 +94,6 @@ void fillGroups(student *class, const int groupSize, const int nrOfStudents, con
     groups[tempBestValue].students[groups[tempBestValue].studentsInGroup] = noBenefits[i];/*puts the student into the group where he added the most roles*/
     groups[tempBestValue].studentsInGroup++;/*increments the counter for how many students are in the group*/
   }
-  free(noBenefits), noBenefits = NULL;
+  free(noBenefits), noBenefits = NULL;/*frees the array of students with no benefit, to take less memory during runtime*/
   free(class), class = NULL;/*frees the class array, to take less memory during runtime*/
 }
