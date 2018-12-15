@@ -48,8 +48,7 @@ void addRolesToGroup(group *group){
 Puts an array of students in to groups based on where they add the most amount of unique roles
 ##############################*/
 void fillGroups(student *class, const int groupSize, const int nrOfStudents, const int nrOfGroups, group *groups){
-  student useless_fgts[40];
-  int i, j, index = 0, tempBestValue, currentBenefit, k = 0;
+  int i, j, index = 0, tempBestValue, currentBenefit;
   for(i = 0; i < nrOfStudents; i++){/*iterate through the students*/
     tempBestValue = 0;/*make sure the index of the best group starts at 0*/
     for(j = 0; j < nrOfGroups; j++){/*iterate through every group*/
@@ -57,34 +56,17 @@ void fillGroups(student *class, const int groupSize, const int nrOfStudents, con
       if(index < currentBenefit && (groups[j].studentsInGroup < groupSize)){/*if the previous best group had less benefit from the current student than the current group, and the current group isn't too big*/
       index = currentBenefit;/*index stores highest benefit a group has gotten from student*/
       tempBestValue = j;/*save the current group as the new best group for the student*/
-      } else {
-        useless_fgts[k++] = class[i];
-      }/*else if ((index == currentBenefit) && (groups[j].studentsInGroup < groupSize) && (groups[j].studentsInGroup < groups[tempBestValue].studentsInGroup)){
+      } else if ((index == currentBenefit) && (groups[j].studentsInGroup < groupSize) && (groups[j].studentsInGroup < groups[tempBestValue].studentsInGroup)){
         /*if the current benefit is the same as the best benefit and the group isnt at the maximum groupsize
-        and the current group's amount of students is lower than the best group's amount of students 
+        and the current group's amount of students is lower than the best group's amount of students */
         tempBestValue = j;
         index = currentBenefit;
-      }*/
+      }
     }
     groups[tempBestValue].students[groups[tempBestValue].studentsInGroup] = class[i];/*puts the student into the group where he added the most roles*/
     groups[tempBestValue].studentsInGroup++;/*increments the counter for how many students are in the group*/
     addRolesToGroup(&groups[tempBestValue]);/*adds the students unique roles, if any, to the group's array of roles*/
     index = 0;
-  }
-  for(i = 0; i < k; i++){
-    tempBestValue = 0;/*make sure the index of the best group starts at 0*/
-    for(j = 0; j < nrOfGroups; j++){/*iterate through every group*/
-      if( (groups[j].studentsInGroup < groupSize)){
-      tempBestValue = j;/*save the current group as the new best group for the student*/
-      } else if ((groups[j].studentsInGroup < groupSize) && (groups[j].studentsInGroup < groups[tempBestValue].studentsInGroup)){
-        /*if the current benefit is the same as the best benefit and the group isnt at the maximum groupsize
-        and the current group's amount of students is lower than the best group's amount of students */
-        tempBestValue = j;
-      }
-    }
-    groups[tempBestValue].students[groups[tempBestValue].studentsInGroup] = useless_fgts[i];/*puts the student into the group where he added the most roles*/
-    groups[tempBestValue].studentsInGroup++;/*increments the counter for how many students are in the group*/
-    addRolesToGroup(&groups[tempBestValue]);/*adds the students unique roles, if any, to the group's array of roles*/
   }
   free(class), class = NULL;/*frees the class array, to take less memory during runtime*/
 }
