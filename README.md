@@ -26,7 +26,7 @@ hvis man kun har 2 roller erstatter man blot rolle3 med "ingenting"
 **Alle roller skal stavet være PRÆCIS som skrevet ovenover, og rollerne SKAL starte med små bogstaver.**
 
 ## Vejledning til det kørende program
-Det første programmet gør hvis et dataset er lagt med programmet, er at spørge om hvor mange elever der er i sættet, efterfulgt af hvor mange elever der max må være i hver gruppe.
+Det første programmet gør hvis et dataset er lagt med programmet, er at spørge om hvor mange elever der er i sættet, efterfulgt af hvor mange elever der max må være i hver gruppe(Helst mellem 4-6, da dette er størelsen på grupepr foreslået af Belbin).
 Hvis det angivne antal ikke er hvad programmet kan se i filen vil der blive givet en fejlmeddelelse, og man får muligheden for at taste et nyt antal i tilfælde af at der skete en tastefejl. 
 Hvis ikke programmet kommer videre så check antallet af elever i filen, samt at de står i korrekt format.
 
