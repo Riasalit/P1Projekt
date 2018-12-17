@@ -1,7 +1,7 @@
 # P1 Projekt
 ## Kompilering af programmet 
 For at kompilere programmet skal du bruge en kompiler der kan compilere ansi C. <br />
-Vi har selv blot kompileret med: `gcc p1-groupSorting.c'`
+Vi har selv blot kompileret med: `gcc p1-groupSorting.c`
 
 ## Input fil
 Programmet kræver at der ligger en fil med navnet "dataset" uden nogen fil extension sammen med det kompilerede program.
