@@ -1,7 +1,7 @@
 void printAll(const group *groups, const int groupSize, const int nrOfGroups){
   int i, j;
   FILE *opf;
-  opf = fopen("Groups-Comple.txt", "w");
+  opf = fopen("Groups-Complete.txt", "w");
   if(opf == NULL){
     printf("dataSet could not be found\n");
     exit(EXIT_FAILURE);
