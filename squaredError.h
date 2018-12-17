@@ -26,7 +26,7 @@ double squaredError(const int groupSize, const int nrOfStudents, const int nrOfG
   if(avgSqrdError != 0){
     returnValue = avg/avgSqrdError;
   } else {
-    returnValue = avg/(1/((double)nrOfGroups*(double)nrOfGroups));
+    returnValue = avg/(1/((double)nrOfGroups+(double)nrOfGroups));
   }
   return returnValue;
 }
