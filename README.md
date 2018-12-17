@@ -1,7 +1,7 @@
 # P1 Projekt
 ## Kompilering af programmet 
 For at kompilere programmet skal du bruge en kompiler der kan compilere ansi C. 
-Vi har selv blot kompileret med <br />
+Vi har selv blot kompileret med 
 `gcc p1-groupSorting.c'`
 
 ## Input fil
