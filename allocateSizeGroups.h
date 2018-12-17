@@ -12,14 +12,14 @@ group *allocateSizeGroups(const int nrOfStudents, const int groupSize, int *nrOf
 
   temp = calloc(*nrOfGroups, sizeof(group));/*allocate space for all the groups*/
   if(temp == NULL){/*display error message if not enough space could be allocated and shut down program*/
-    printf("ERROR: Could not create space for temp");
+    printf("ERROR: Could not create space for temp\n");
     exit(EXIT_FAILURE);
   }
   for(i = 0; i < *nrOfGroups; i++){/*iterate through all groups*/
     temp[i].students = NULL;
     temp[i].students = calloc(groupSize, sizeof(student));/*allocate space for the students in the group*/
     if(temp[i].students == NULL){/*display error message if not enough space could be allocated and shut down program*/
-      printf("ERROR: Could not create space for temp[%d].student", i);
+      printf("ERROR: Could not create space for temp[%d].student\n", i);
       exit(EXIT_FAILURE);
     }
   }
