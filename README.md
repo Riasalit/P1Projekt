@@ -23,7 +23,7 @@ Rollerne er:
 * kontaktskaber
 hvis man kun har 2 roller erstatter man blot rolle3 med "ingenting"
 #### BEMÆRK!! 
-**Alle roller skal stavet være PRÆCIS som ovenover, og rollerne SKAL starte med små bogstaver.**
+**Alle roller skal stavet være PRÆCIS som skrevet ovenover, og rollerne SKAL starte med små bogstaver.**
 
 ## Vejledning til det kørende program
 Det første programmet gør hvis et dataset er lagt med programmet, er at spørge om hvor mange elever der er i sættet, efterfulgt af hvor mange elever der max må være i hver gruppe.
