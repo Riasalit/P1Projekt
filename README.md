@@ -6,7 +6,8 @@ Mathias Mosskov Jacobsen <br />
 Teis Vognstoft Harrington <br />
 ## Kompilering af programmet 
 For at kompilere programmet skal du bruge en kompiler der kan kompilere ANSI C89. <br />
-Vi har selv blot kompileret med GNU's Compiler Collection (GCC). Derfor kompileret med koden: `gcc p1-groupSorting.c`
+Vi har selv blot kompileret med GNU's Compiler Collection (GCC). Derfor kompileret med koden: `gcc p1-groupSorting.c -o Gruppedannelse.exe`
+Du kan også blot køre programmet Gruppedannelse.exe.
 
 ## Input fil
 Programmet kræver at der ligger en fil med navnet "dataset" uden nogen fil extension sammen med det kompilerede program.
