@@ -1,7 +1,7 @@
 # Gruppedannelse i gymnasiet
 ## Kompilering af programmet 
 For at kompilere programmet skal du bruge en kompiler der kan compilere ANSI C89. <br />
-Vi har selv blot kompileret med GNU's Compiler Collection (GCC). Derfor kompilerede med koden: `gcc p1-groupSorting.c`
+Vi har selv blot kompileret med GNU's Compiler Collection (GCC). Derfor kompileret med koden: `gcc p1-groupSorting.c`
 
 ## Input fil
 Programmet kræver at der ligger en fil med navnet "dataset" uden nogen fil extension sammen med det kompilerede program.
