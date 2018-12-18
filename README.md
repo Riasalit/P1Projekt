@@ -9,7 +9,7 @@ Filen skal have data med eleverne i, i følgene form:
 
 **Navn (muligvis evernavn): rolle1 rolle2 rolle3**
 
-Bemærk at alt før ":" vil blive indført som en string i programmet, så antallet af navne gør ingen forskel.
+Bemærk at alt før ":" vil blive indført som en string i programmet, så antallet af navne gør ingen forskel.<br />
 (OBS: alt efter de første 30 chars bliver tabt)
 
 Rollerne er:
