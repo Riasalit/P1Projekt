@@ -5,7 +5,7 @@ Vi har selv blot kompileret med GNU's Compiler Collection (GCC). Derfor kompiler
 
 ## Input fil
 Programmet kræver at der ligger en fil med navnet "dataset" uden nogen fil extension sammen med det kompilerede program.
-Filen skal have data med eleverne i, i følgene form: 
+Filen skal have data med eleverne i, i følgende form: 
 
 **Navn (muligvis evernavn): rolle1 rolle2 rolle3**
 
@@ -34,8 +34,8 @@ Hvis ikke programmet kommer videre så tjek antallet af elever i filen, samt at 
 
 ## Efter programmet har kørt
 Når programmet har udregnet de bedst mulige grupper med det givne dataset, vil der blive udskrevet en fil til destinationen programmet ligger i kaldet "Groups-Complete.txt".
-I tilfælde af at .exe filen er kørt i windows vil vinduet også blot lukke igen.
-Hvis programmet er kørt i en terminal vil man kunne se "gruppe kvaliteten" af hver gruppe, samt 3 tal der symbolisere elevernes rolle ud for dem.
+I tilfælde af at .exe filen er kørt i windows vil vinduet blot lukke igen.
+Hvis programmet er kørt i en terminal vil man kunne se "gruppe kvaliteten" af hver gruppe, samt 3 tal der symboliserer elevernes rolle ud for dem.
 
 ## Test af program
 De 3 test der er lavet i rapporten omkring programmet, er lavet med de 3 datasæt fra dette repository under samme navne. For at få de resultater er programmet kørt med de angivne dataset, og gruppestørelsen er sat til 4. 
