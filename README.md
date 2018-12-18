@@ -1,4 +1,4 @@
-# P1 Projekt
+# Software til at danne heterogene grupper
 ## Kompilering af programmet 
 For at kompilere programmet skal du bruge en kompiler der kan compilere ansi C. <br />
 Vi har selv blot kompileret med: `gcc p1-groupSorting.c`
