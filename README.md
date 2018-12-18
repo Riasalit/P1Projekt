@@ -22,6 +22,7 @@ Rollerne er:
 * formidler
 * koordinator
 * kontaktskaber <br />
+
 hvis man kun har 2 roller erstatter man blot rolle3 med "ingenting"
 #### BEMÆRK!! 
 **Alle roller skal stavet være PRÆCIS som skrevet ovenover, og rollerne SKAL starte med små bogstaver.**
