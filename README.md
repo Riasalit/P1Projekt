@@ -1,4 +1,9 @@
 # Gruppedannelse i gymnasiet
+## Made by
+Anders Alexander Sønderby <br />
+Daniel Vilslev <br />
+Mathias Mosskov Jacobsen <br />
+Teis Vognstoft Harrington <br />
 ## Kompilering af programmet 
 For at kompilere programmet skal du bruge en kompiler der kan kompilere ANSI C89. <br />
 Vi har selv blot kompileret med GNU's Compiler Collection (GCC). Derfor kompileret med koden: `gcc p1-groupSorting.c`
