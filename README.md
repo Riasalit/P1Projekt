@@ -1,5 +1,5 @@
 # Gruppedannelse i gymnasiet
-## Made by
+#### Made by
 Anders Alexander Sønderby <br />
 Daniel Vilslev <br />
 Mathias Mosskov Jacobsen <br />
