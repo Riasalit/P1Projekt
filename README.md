@@ -37,6 +37,6 @@ Når programmet har udregnet de bedst mulige grupper med det givne dataset, vil 
 I tilfælde af at .exe filen er kørt i windows vil vinduet blot lukke igen.
 Hvis programmet er kørt i en terminal vil man kunne se "gruppe kvaliteten" af hver gruppe, samt 3 tal der symboliserer elevernes rolle ud for dem.
 
-## Tests af program
-De 3 test der er lavet i rapporten omkring programmet, er lavet med de 3 datasæt fra dette repository under samme navne. For at få de resultater er programmet kørt med de angivne dataset, og gruppestørelsen er sat til 4. 
+## Test af program
+De 3 tests der er lavet i rapporten omkring programmet, er lavet med de 3 datasæt fra dette repository under samme navne. For at få de resultater er programmet kørt med de angivne dataset, og gruppestørelsen er sat til 4. 
 Resultaterne er ikke garenteret at blive præcis det samme. Gruppekvaliteten bør dog altid blive det samme. Men rækkefølgen eleveren bliver sat i grupper er randomized, så hvis 2 elever kan byttes om på uden at antallet af grupper med samme antal roller ændres kan eleverne sidde i forskellige grupper. Men hvis der var 2 grupper med 8 unikke roller i den ene og 7 unikke roller i den anden, er der stadig en gruppe med 8 og en anden med 7.
