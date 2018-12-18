@@ -38,5 +38,5 @@ I tilfælde af at .exe filen er kørt i Windows vil vinduet blot lukke igen.
 Hvis programmet er kørt i en terminal vil man kunne se "gruppe kvaliteten" af hver gruppe, samt 3 tal der symboliserer elevernes rolle ud for dem.
 
 ## Test af program
-De 3 tests der er lavet i rapporten omkring programmet, er lavet med de 3 datasæt fra dette repository under samme navne (for at ændre hvilket dataset der bruges). For at få de resultater er programmet kørt med de angivne dataset, og gruppestørelsen er sat til 4. 
+De 3 tests der er lavet i rapporten omkring programmet, er lavet med de 3 datasæt fra dette repository under samme navne (for at ændre hvilket dataset der bruges, skal for eksempel "dataset2" blot navngives "dataset"). For at få de resultater er programmet kørt med de angivne dataset, og gruppestørelsen er sat til 4. 
 Resultaterne er ikke garenteret at blive præcis det samme. Gruppekvaliteten bør dog altid blive det samme. Men rækkefølgen eleverne bliver sat i grupper er tilfældig, så hvis 2 elever kan byttes om på uden at antallet af grupper med samme antal roller ændres kan eleverne sidde i forskellige grupper. Men hvis der var 2 grupper med 8 unikke roller i den ene og 7 unikke roller i den anden, er der stadig en gruppe med 8 og en anden med 7.
